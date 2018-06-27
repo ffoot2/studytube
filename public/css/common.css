@@ -1,0 +1,19 @@
+    .row div {
+      border: 1px solid #000;
+      padding: 1em;
+      text-align: center;
+      background-color: #dedede;
+    }
+    
+    div .tit {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -o-text-overflow: ellipsis; 
+      
+    }
+    
+    div .movie{
+      
+    }
+    
