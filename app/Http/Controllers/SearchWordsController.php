@@ -21,13 +21,13 @@ class SearchWordsController extends Controller
         $pageTokens[] = $search['info']['nextPageToken'];
         $search = Youtube::paginateResults($params, $pageTokens[0]);
         
-       /*
-        // $videoList = Youtube::searchVideos($searchWord);
-        // $videoList = Youtube::searchVideos($searchWord);
-        
-        // $results = Youtube::search($searchWord);
-         dd($results);
-        */
-        return view('welcome',['videos' => $search,]);
+        // dd($search);
+        // return view('welcome',['videos' => $search,]);
+        return view('welcome',['videos' => $search, 'keyWords' => $searchWord]);
+    
+    }
+    
+    public function show(){
+        return view('movie');
     }
 }
