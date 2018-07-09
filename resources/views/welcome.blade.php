@@ -5,17 +5,16 @@
     <div class="row">
         @foreach($videos['results'] as $video)
              <div class="col-sm-3">
-                 <img src="<?php echo $video->snippet->thumbnails->default->url; ?>"
-                      alt="<?php echo $video->snippet->title ?>">
-                </img>
+                 <a href="{{ url('movie', [ $video->id->videoId ]) }}">
+                     <img src="<?php echo $video->snippet->thumbnails->default->url; ?>"
+                          alt="<?php echo $video->snippet->title ?>">
+                    </img>
+                </a>
                 <div class="tit">
                     {!! $video->snippet->title !!}
                 </div>
             </div>
         @endforeach
-<!--　お試し　--------------------------------------------------------------------->
-<a href="movie">詳細テスト</a>
-<!--　お試し　--------------------------------------------------------------------->
     </div>
 @endsection
 

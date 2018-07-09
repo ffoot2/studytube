@@ -14,20 +14,23 @@ class SearchWordsController extends Controller
             'q'             => $searchWord,
             'type'          => 'video',
             'part'          => 'id, snippet',
-            'maxResults'    => 8
+            'maxResults'    => 8                        //動画取得件数
         ];
         $pageTokens = [];
         $search = Youtube::paginateResults($params, null);
         $pageTokens[] = $search['info']['nextPageToken'];
         $search = Youtube::paginateResults($params, $pageTokens[0]);
         
-        // dd($search);
+        //   dd($search);
         // return view('welcome',['videos' => $search,]);
         return view('welcome',['videos' => $search, 'keyWords' => $searchWord]);
     
     }
     
-    public function show(){
-        return view('movie');
+    public function show(Request $request){
+        $id = $request->id;
+        $video = Youtube::getVideoInfo($id);
+        return view('movie',['video' => $video]);
     }
+    
 }

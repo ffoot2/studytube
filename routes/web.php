@@ -16,4 +16,4 @@ Route::get('/', function () {
 });
 */
 Route::get('/', 'SearchWordsController@index');
-Route::get('movie', 'SearchWordsController@show');
+Route::get('movie/{id}', 'SearchWordsController@show');
