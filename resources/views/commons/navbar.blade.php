@@ -13,14 +13,12 @@
             <div>&nbsp;</div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left">
-                    <li><a href="#">検索ワード</a></li>
-                    <li><a href="#">検索ワード２</a></li>
-{{------------------------------------------------------------------------------------
-DBから検索キーワードを拾いたい
+{{--
                     @foreach($keyWords as $keyWord)
                         <li><a href="#">{!! $keyWord !!}</a></li>
                     @endforeach
--------------------------------------------------------------------------------------}}
+--}}
+                {{ var_dump($searchWords) }}
                 </ul>
             </div>
         </div>
