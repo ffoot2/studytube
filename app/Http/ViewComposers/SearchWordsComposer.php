@@ -15,6 +15,9 @@ class SearchWordsComposer {
     public function compose(View $view)
     {
         $searchWord = SearchWord::all();
+        // dd($searchWord);
+        // dd($searchWord[0]['word']);
+        
         $view->with('searchWords', $searchWord);
     }
 }

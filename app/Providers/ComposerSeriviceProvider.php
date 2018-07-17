@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use View;
 use Illuminate\Support\ServiceProvider;
-use App\Http\ViewComposers\SearchWordComposer;
+use App\Http\ViewComposers\SearchWordsComposer;
 
 class ComposerSeriviceProvider extends ServiceProvider
 {
@@ -17,8 +17,7 @@ class ComposerSeriviceProvider extends ServiceProvider
     {
         View::composers([
           SearchWordsComposer::class => [
-              'admin.dashboard',
-              'admin.blog'
+              '*'
           ]
       ]);
     }

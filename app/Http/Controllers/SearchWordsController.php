@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\SearchWord;
 use Alaouy\Youtube\Facades\Youtube;
+use Illuminate\Support\Facades\DB;
 
 class SearchWordsController extends Controller
 {
@@ -25,6 +26,26 @@ class SearchWordsController extends Controller
         // return view('welcome',['videos' => $search,]);
         return view('welcome',['videos' => $search, 'keyWords' => $searchWord]);
     
+    }
+    
+    public function index2(Request $req){
+        $name = $req->name;
+        $re = DB::table('search_words')->where('word', $name);
+        $searchWord = $re->wheres[0]['value'];
+        
+        $params = [
+            'q'             => $searchWord,
+            'type'          => 'video',
+            'part'          => 'id, snippet',
+            'maxResults'    => 8                        //動画取得件数
+        ];
+        $pageTokens = [];
+        $search = Youtube::paginateResults($params, null);
+        $pageTokens[] = $search['info']['nextPageToken'];
+        $search = Youtube::paginateResults($params, $pageTokens[0]);
+        
+        return view('welcome',['videos' => $search, 'keyWords' => $searchWord]);
+        
     }
     
     public function show(Request $request){
