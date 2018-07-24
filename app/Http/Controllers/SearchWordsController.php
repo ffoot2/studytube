@@ -12,8 +12,6 @@ class SearchWordsController extends Controller
     public function index(){
         $searchWord = SearchWord::first();
         $search = $this->ytApi($searchWord);
-        // return view('welcome',['videos' => $search,]);
-        dd($search);
         return view('welcome',['videos' => $search, 'keyWords' => $searchWord]);
     
     }
