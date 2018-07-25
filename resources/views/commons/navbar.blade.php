@@ -14,7 +14,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left">
                     @foreach($searchWords as $keyWord)
-                        <li><a href="<?php echo $keyWord['word'] ?>">{!! $keyWord['word'] !!}</a></li>
+                        <li><a href="{{ route('movie.index2', [ $keyWord['word'] ]) }}">{{ $keyWord['word'] }}</a></li>
                     @endforeach
                 </ul>
             </div>

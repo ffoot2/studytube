@@ -17,4 +17,4 @@ Route::get('/', function () {
 */
 Route::get('/', 'SearchWordsController@index');
 Route::get('movie/{id}', 'SearchWordsController@show');
-Route::get('/{name}', 'SearchWordsController@index2')->where('name', '.*');
+Route::get('/{name}', 'SearchWordsController@index2')->where('name', '.*')->name('movie.index2');
