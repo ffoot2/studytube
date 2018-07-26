@@ -11,7 +11,8 @@ class SearchWordsController extends Controller
 {
     public function index(){
         $searchWord = SearchWord::first();
-        $search = $this->ytApi($searchWord);
+        // dd($searchWord['word']);
+        $search = $this->ytApi($searchWord['word']);
         return view('welcome',['videos' => $search, 'keyWords' => $searchWord]);
     
     }
@@ -38,9 +39,13 @@ class SearchWordsController extends Controller
     */
     private function ytApi($searchWord){
         $params = [
-            'q'             => $searchWord,
-            'type'          => 'video',
-            'part'          => 'id, snippet',
+            'q'                 => $searchWord . '入門',
+            'type'              => 'video',
+            'part'              => 'id, snippet',
+            'regionCode'        => 'jp',
+            'relevanceLanguage' => 'JA',
+            // 'location'          => 38.258595, 137.6850225,
+            // 'locationRadius'    => '000km',
             'maxResults'    => 8                        //動画取得件数
         ];
         $pageTokens = [];
