@@ -178,6 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Alaouy\Youtube\YoutubeServiceProvider::class,
         App\Providers\ComposerSeriviceProvider::class,
+        Olssonm\VeryBasicAuth\VeryBasicAuthServiceProvider::class,
 
     ],
 
