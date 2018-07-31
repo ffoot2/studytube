@@ -8,7 +8,7 @@
              </div>
         </div>
         
-        <div class="col-sm-3">
+        <div class="col-sm-12">
             <?php echo $video->snippet->title; ?>
         </div>
     </div>
