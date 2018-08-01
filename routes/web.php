@@ -15,10 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
-Route::group(['middleware' => 'auth.very_basic', 'prefix' => ''], function() {
+// Route::group(['middleware' => 'auth.very_basic', 'prefix' => ''], function() {
 
     Route::get('/', 'SearchWordsController@index');
     Route::get('movie/{id}', 'SearchWordsController@show');
     Route::get('/{name}', 'SearchWordsController@index2')->where('name', '.*')->name('movie.index2');
 
-});
+// });
