@@ -2,9 +2,9 @@
 
 @section('content')
     
-    <div class="row">
+    <div class="row custom-row">
         @foreach($videos['results'] as $video)
-             <div class="col-sm-3">
+             <div class="col-sm-3 masu">
                  <a href="{{ url('movie', [ $video->id->videoId ]) }}">
                      <img src="<?php echo $video->snippet->thumbnails->default->url; ?>"
                           alt="<?php echo $video->snippet->title ?>">

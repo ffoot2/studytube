@@ -1,19 +1,20 @@
-    .row div {
-      border: 1px solid #000;
+    div.row.custom-row {
+      /*border: 1px solid #000;*/
       padding: 1em;
       text-align: center;
-      background-color: #dedede;
+      /*background-color: #dedede;*/
     }
     
-    div .tit {
+    div.masu{
+      border: 0.25px solid #000;
+      background-color: #dedede;
+    
+    }
+    
+    div.tit {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      -o-text-overflow: ellipsis; 
-      
-    }
-    
-    div .movie{
       
     }
     
