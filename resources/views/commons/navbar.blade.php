@@ -11,7 +11,6 @@
                 <!--<a class="navbar-brand" href="/">StudyTube</a>-->
                 <a href="/"><img class="logo" alt="ロゴ" src="{{ asset('/img/logo.png') }}"></a>
             </div>
-            <div>&nbsp;</div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left">
                     @foreach($searchWords as $keyWord)
