@@ -16,12 +16,14 @@ Route::get('/', function () {
 });
 */
 // Route::group(['middleware' => 'auth.very_basic', 'prefix' => ''], function() {
-
+    Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
+    Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
+    Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+    Route::post('login', 'Auth\LoginController@login')->name('login.post');
+    Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
     Route::get('/', 'SearchWordsController@index');
     Route::get('movie/{id}', 'SearchWordsController@show');
     Route::get('/{name}', 'SearchWordsController@index2')->where('name', '.*')->name('movie.index2');
 
 // });
 
-Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
-Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
