@@ -36,7 +36,7 @@ Route::prefix('admin')->name('admin::')->group(function() {
 
     //  Route::get('/login', 'AdminController@index');
     // Route::get('/home', 'AdminController@index');
-    Route::get('admin', 'AdminController@index')->name('admin.index');
+    Route::get('/', 'AdminController@index')->name('admin.index');
     //  Route::get('/admin/home', 'AdminController@index');
      
     
@@ -53,6 +53,4 @@ Route::prefix('admin')->name('admin::')->group(function() {
     Route::get('/{name}', 'SearchWordsController@onclickSearchWord')->where('name', '.*')->name('movie.onclickSearchWord');
 
 // });
-Route::post('admin', 'AdminController@index')->name('admin.index');
-Route::get('logout', 'AdminController@logout')->name('admin.logout');
     
