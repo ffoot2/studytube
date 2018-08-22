@@ -11,13 +11,12 @@ class SearchWordsController extends Controller
 {
     public function index(){
         $searchWord = SearchWord::first();
-        // dd($searchWord['word']);
         $search = $this->ytApi($searchWord['word']);
         return view('welcome',['videos' => $search, 'keyWords' => $searchWord]);
     
     }
     
-    public function index2(Request $req){
+    public function onclickSearchWord(Request $req){
         $name = $req->name;
         $re = DB::table('search_words')->where('word', $name);
         $searchWord = $re->wheres[0]['value'];
@@ -26,7 +25,7 @@ class SearchWordsController extends Controller
         
     }
     
-    public function show(Request $request){
+    public function showMovie(Request $request){
         $id = $request->id;
         $video = Youtube::getVideoInfo($id);
         return view('movie',['video' => $video]);
@@ -34,8 +33,8 @@ class SearchWordsController extends Controller
     
     /*
     *APIを使ってYouTubeより動画を取得する
-    *引数 $searchWord 検索ワード
-    *return $search   APIで取得した動画（オブジェクト）
+    *@param     $searchWord 検索ワード
+    *@return    $search     APIで取得した動画（オブジェクト）
     */
     private function ytApi($searchWord){
         $params = [
