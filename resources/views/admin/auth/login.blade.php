@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
 
-            {!! Form::open(['route' => 'admin.index']) !!}
+            {!! Form::open(['route' => 'admin.login']) !!}
                 <div class="form-group">
                     {!! Form::label('email', 'Email') !!}
                     {!! Form::email('email', old('email'), ['class' => 'form-control']) !!}
