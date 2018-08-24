@@ -11,7 +11,7 @@ class SearchWordsController extends Controller
 {
     public function index(){
         $searchWord = SearchWord::first();
-        $search = $this->ytApi($searchWord['word']);
+        $search = $this->useAPIfromYotube($searchWord['word']);
         return view('welcome',['videos' => $search, 'keyWords' => $searchWord]);
     
     }
@@ -20,7 +20,7 @@ class SearchWordsController extends Controller
         $name = $req->name;
         $re = DB::table('search_words')->where('word', $name);
         $searchWord = $re->wheres[0]['value'];
-        $search = $this->ytApi($searchWord);
+        $search = $this->useAPIfromYotube($searchWord);
         return view('welcome',['videos' => $search, 'keyWords' => $searchWord]);
         
     }
@@ -36,7 +36,7 @@ class SearchWordsController extends Controller
     *@param     $searchWord 検索ワード
     *@return    $search     APIで取得した動画（オブジェクト）
     */
-    private function ytApi($searchWord){
+    private function useAPIfromYotube($searchWord){
         $params = [
             'q'                 => $searchWord . '入門',
             'type'              => 'video',
