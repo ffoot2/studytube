@@ -38,7 +38,12 @@ Route::prefix('admin')->name('admin.')->group(function() {
     // Route::get('/home', 'AdminController@index');
     Route::get('/', 'AdminController@index')->name('admin.index');
     //  Route::get('/admin/home', 'AdminController@index');
-     
+    
+    Route::get('/', 'Admin\CategoryController@index');
+    Route::get('/create', 'Admin\CategoryController@create')->name('create');
+    Route::post('/', 'Admin\CategoryController@store')->name('store');
+    Route::get('/edit', 'Admin\CategoryController@edit');
+    
     
 });
 

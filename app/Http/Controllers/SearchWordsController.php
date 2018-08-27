@@ -31,6 +31,12 @@ class SearchWordsController extends Controller
         return view('movie',['video' => $video]);
     }
     
+    public function admimIndexSearchWord(){
+        $searchWord = SearchWord::all();
+        return view('admin.admin',['keyWords' => $searchWord]);
+    
+    }
+    
     /*
     *APIを使ってYouTubeより動画を取得する
     *@param     $searchWord 検索ワード
