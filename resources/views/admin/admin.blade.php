@@ -23,7 +23,7 @@
               <td>{!! link_to_route('admin.edit', '編集') !!}</td>
               <!--<td>削除</td>-->
               <!--<td><a href="#" class="delete-button">削除</a></td>-->
-              <td>{!! link_to_route('admin.destroy', '削除', ['id' => $searchWord['id']], ['name' => 'del'], ['class' => 'delete-button']) !!}</td>
+              <td>{!! link_to_route('admin.destroy', '削除', ['id' => $searchWord['id']], ['name' => 'del', 'class' => 'delete-button']) !!}</td>
             </tr>
           @endforeach
         </table>
@@ -60,7 +60,7 @@ $('.delete-button').on('click', function() {
           var $form = $([
              '<form method="POST" action="' + url + '" accept-charset="UTF-8">',
              '<input name="_method" type="hidden" value="delete">',
-            '<input name="_token" type="hidden" value="' + $('meta[name="csrf-token"]').attr('td') + '">',
+            '<input name="_token" type="hidden" value="' + $('meta[name="csrf-token"]').attr('content') + '">',
             '</form>'
           ].join(''));
 
