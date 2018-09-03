@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
         <!--<link href="css/common.css" rel="stylesheet" type="text/css">-->
         <!--<link rel="stylesheet" href="{{ asset('/css/common.css') }}">-->
         <!--<link rel="stylesheet" href="{{ asset('/css/common.css', true) }}">-->
@@ -18,7 +17,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-        @include('commons.navbar')
+        @include('admin.admin_navbar')
 
         <div class="container">
             @include('commons.error_messages')

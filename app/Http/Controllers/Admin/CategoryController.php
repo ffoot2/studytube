@@ -16,7 +16,6 @@ class CategoryController extends Controller
     public function index()
     {
         $searchWords = SearchWord::all();
-        //  dd($searchWords);
         return view('admin.admin',['$searchWords' => $searchWords]);
         
     }
@@ -72,8 +71,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    // public function edit($id)
+    public function edit(Request $req)
     {
+        $id = $req->id;
         $searchWord = SearchWord::find($id);
         return view('admin.edit', [
             'searchWord' => $searchWord,
@@ -89,7 +90,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'word' => 'required',
+            'sort' => 'required|integer'
+        ]);
+        $searchWord = SearchWord::find($id);
+        $searchWord->word = $request->word;
+        $searchWord->sort = $request->sort;
+        
+        $searchWord->save();
+
+        return redirect('/admin');
     }
 
     /**
@@ -98,8 +109,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->id;
+        $message = SearchWord::find($id);
+        $message->delete();
+
+        return redirect('/admin');
     }
 }

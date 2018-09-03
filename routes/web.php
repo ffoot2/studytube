@@ -38,12 +38,14 @@ Route::prefix('admin')->name('admin.')->group(function() {
     // Route::get('/home', 'AdminController@index');
     Route::get('/', 'AdminController@index')->name('admin.index');
     //  Route::get('/admin/home', 'AdminController@index');
-    
+
+    //管理画面関係（カテゴリ）
     Route::get('/', 'Admin\CategoryController@index');
     Route::get('/create', 'Admin\CategoryController@create')->name('create');
     Route::post('/', 'Admin\CategoryController@store')->name('store');
-    Route::get('/edit', 'Admin\CategoryController@edit');
-    
+    Route::get('/edit', 'Admin\CategoryController@edit')->name('edit');
+    Route::put('/{id}', 'Admin\CategoryController@update')->name('update');
+    Route::delete('/', 'Admin\CategoryController@destroy')->name('destroy');
     
 });
 

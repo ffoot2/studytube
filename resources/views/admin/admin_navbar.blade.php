@@ -15,17 +15,7 @@
               @endforeach
          </ul>
          <div>
-            @if (Auth::check())
-                <a href="#">Users</a>
-                {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>--}}
-                <a href="#">{{ Auth::user()->name }}</a>
-                <!--<li><a href="#">My profile</a></li>-->
-                <!--<li role="separator" class="divider"></li>-->
                 {!! link_to_route('logout.get', 'Logout', [], [ 'class' => 'btn btn-outline-success my-2 my-sm-0' ]) !!}
-            @else
-                {!! link_to_route('signup.get', 'Register') !!}
-                {!! link_to_route('login', 'Login') !!}
-            @endif
         </div>
     </div>
 </nav>
