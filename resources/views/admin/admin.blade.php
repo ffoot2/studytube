@@ -53,7 +53,7 @@ $('.delete-button').on('click', function() {
     var url = $(this).attr('href')
     // var adr = document.getElementById('td').children[0]
     
-    var result = window.confirm('削除ボタンがクリックされたよ')
+    var result = window.confirm('本当に削除しますか')
     
     // console.log(result);
       if( result ) {

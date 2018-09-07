@@ -9,6 +9,10 @@ use Auth;
 
 class CategoryController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth:admin');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -16,10 +20,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        dd(Auth::user());
-        $searchWords = SearchWord::all();
-        return view('admin.admin',['$searchWords' => $searchWords]);
-        
+        if(Auth::check()){
+            $searchWords = SearchWord::all();
+            return view('admin.admin',['$searchWords' => $searchWords]);
+        }else{
+            return redirect('/admin/login');
+        }
     }
 
     /**
@@ -29,11 +35,14 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $searchWord = new SearchWord;
-        return view('admin.create',[
-            'searchWord' => $searchWord,
-        ]);
-        
+        if(Auth::check()){
+            $searchWord = new SearchWord;
+            return view('admin.create',[
+                'searchWord' => $searchWord,
+            ]);
+        }else{
+            return redirect('/admin/login');
+        }
     }
 
     /**
@@ -44,16 +53,20 @@ class CategoryController extends Controller
      */
     public function store(Request $req)
     {
-        $this->validate($req,[
-            'word' => 'required',
-            'sort' => 'required|integer'
-        ]);
-        $searchWord = new SearchWord;
-        $searchWord->word = $req->word;
-        $searchWord->sort = $req->sort;
-        $searchWord->save();
-        
-        return redirect('/admin');
+        if(Auth::check()){
+            $this->validate($req,[
+                'word' => 'required',
+                'sort' => 'required|integer'
+            ]);
+            $searchWord = new SearchWord;
+            $searchWord->word = $req->word;
+            $searchWord->sort = $req->sort;
+            $searchWord->save();
+            
+            return redirect('/admin');
+        }else{
+            return redirect('/admin/login');
+        }
     }
 
     /**
@@ -76,11 +89,15 @@ class CategoryController extends Controller
     // public function edit($id)
     public function edit(Request $req)
     {
-        $id = $req->id;
-        $searchWord = SearchWord::find($id);
-        return view('admin.edit', [
-            'searchWord' => $searchWord,
-        ]);
+        if(Auth::check()){
+            $id = $req->id;
+            $searchWord = SearchWord::find($id);
+            return view('admin.edit', [
+                'searchWord' => $searchWord,
+            ]);
+        }else{
+            return redirect('/admin/login');
+        }
     }
 
     /**
@@ -92,17 +109,21 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'word' => 'required',
-            'sort' => 'required|integer'
-        ]);
-        $searchWord = SearchWord::find($id);
-        $searchWord->word = $request->word;
-        $searchWord->sort = $request->sort;
-        
-        $searchWord->save();
-
-        return redirect('/admin');
+        if(Auth::check()){
+            $this->validate($request,[
+                'word' => 'required',
+                'sort' => 'required|integer'
+            ]);
+            $searchWord = SearchWord::find($id);
+            $searchWord->word = $request->word;
+            $searchWord->sort = $request->sort;
+            
+            $searchWord->save();
+    
+            return redirect('/admin');
+        }else{
+            return redirect('/admin/login');
+        }
     }
 
     /**
@@ -113,10 +134,14 @@ class CategoryController extends Controller
      */
     public function destroy(Request $request)
     {
-        $id = $request->id;
-        $message = SearchWord::find($id);
-        $message->delete();
-
-        return redirect('/admin');
+        if(Auth::check()){
+            $id = $request->id;
+            $message = SearchWord::find($id);
+            $message->delete();
+    
+            return redirect('/admin');
+        }else{
+            return redirect('/admin/login');
+        }
     }
 }
