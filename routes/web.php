@@ -50,6 +50,7 @@ Route::prefix('admin')->name('admin.')->group(function() {
 });
 
 // Route::group(['middleware' => 'auth.very_basic', 'prefix' => ''], function() {
+    Route::get('profile', 'ProfileController@editProfile')->name('profile.get');
     Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
     Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -58,6 +59,8 @@ Route::prefix('admin')->name('admin.')->group(function() {
     Route::get('/', 'SearchWordsController@index');
     Route::get('movie/{id}', 'SearchWordsController@showMovie');
     Route::get('/{name}', 'SearchWordsController@onclickSearchWord')->where('name', '.*')->name('movie.onclickSearchWord');
-
+   
+    
+    
 // });
 
