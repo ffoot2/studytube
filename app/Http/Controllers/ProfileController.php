@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ProfileUpdateForm;
 use Auth;
 
 use App\SearchWord;
@@ -20,7 +21,9 @@ class ProfileController extends Controller
         return view('profile',['name' => $name, 'id' => $id, 'searchWords' => $searchWords]);
     }
     
-    public function updateProfile(){
-        
+    public function updateProfile(ProfileUpdateForm $request)
+    {
+    
+        return redirect()->back();
     }
 }
