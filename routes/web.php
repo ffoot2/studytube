@@ -51,6 +51,8 @@ Route::prefix('admin')->name('admin.')->group(function() {
 
 // Route::group(['middleware' => 'auth.very_basic', 'prefix' => ''], function() {
     Route::get('profile', 'ProfileController@editProfile')->name('profile.get');
+    Route::put('profile', 'ProfileController@updateProfile');
+
     Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
     Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
