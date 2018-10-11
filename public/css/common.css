@@ -23,3 +23,13 @@
       margin-top: .80rem;
     }
     
+    div.main_visual{
+      background-image:url('/img/keyboard-70506_1920.jpg');
+    }
+    
+    div.main_visual:after{
+      background: #000;
+      opacity: 0.5;
+      width: 100%;
+      height: 100%;
+    }

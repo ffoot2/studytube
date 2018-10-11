@@ -10,10 +10,13 @@ use Illuminate\Support\Facades\DB;
 class SearchWordsController extends Controller
 {
     public function index(){
+        /*
         $searchWord = SearchWord::first();
         $search = $this->useAPIfromYotube($searchWord['word']);
         return view('welcome',['videos' => $search, 'keyWords' => $searchWord]);
-    
+        */
+        return view('top');
+        
     }
     
     public function onclickSearchWord(Request $req){
