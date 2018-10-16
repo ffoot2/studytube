@@ -10,12 +10,15 @@ use Illuminate\Support\Facades\DB;
 class SearchWordsController extends Controller
 {
     public function index(){
+        // トップページ差し替えにより下記ソースを削除
         /*
         $searchWord = SearchWord::first();
         $search = $this->useAPIfromYotube($searchWord['word']);
         return view('welcome',['videos' => $search, 'keyWords' => $searchWord]);
         */
-        return view('top');
+        $searchWord = SearchWord::all();
+        
+        return view('top', ['categories' => $searchWord]);
         
     }
     
