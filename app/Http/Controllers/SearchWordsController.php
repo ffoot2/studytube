@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\SearchWord;
+use App\RecomendMovie;
+// php artisan make:model RecomendMovie
 use Alaouy\Youtube\Facades\Youtube;
 use Illuminate\Support\Facades\DB;
 
@@ -17,8 +19,12 @@ class SearchWordsController extends Controller
         return view('welcome',['videos' => $search, 'keyWords' => $searchWord]);
         */
         $searchWord = SearchWord::all();
-        
-        return view('top', ['categories' => $searchWord]);
+        // おすすめ動画テーブルからカテゴリ・タイトル・サムネを取得
+        $recomendMovies = DB::table('recomend_movies')
+                            ->leftJoin('search_words', 'search_words.id', '=', 'recomend_movies.category_id')
+                            ->get();
+        // dd($recomendMovies);
+        return view('top', ['categories' => $searchWord, 'recomendMovies' => $recomendMovies]);
         
     }
     
